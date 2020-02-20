@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: fi-do
+  role_name: simple-bootstrap
   description: Simple role to install needed packages for further development.
   company: free
 
