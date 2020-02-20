@@ -1,48 +1,56 @@
-Role Name
+simple-bootstrap
 =========
 
-A brief description of the role goes here.
+Little role to install packages on test plattforms for further development.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+To execute:
+* Ansible >= 2.7
+
+To execute tests:
+* Molecule == 2.22
+* LXD
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+The items under _simple_bootstrap_pre_packages are a short set of important
+packages for me.(python3, unzip).
+Use the simple_bootstrap_packages variable for additional packages.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+No dependencies.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
+```
     - hosts: servers
       roles:
-         - { role: simple_bootstrap, x: 42 }
+         - { role: simple_bootstrap }
+      vars:
+        simple_bootstrap_packages:
+          - nano
+```
+
 
 License
 -------
 
-BSD
+GPLv2
 
-Author Information
+Etc
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Feedback is appreciated. I like to improve my understanding in Ansible
+related topics.
+
+ToDo
+----
+- [ ] Enhance list of important packages.
+- [ ] Improve molecule scenario for diffrent plattforms.
+- [ ] Error handling.
