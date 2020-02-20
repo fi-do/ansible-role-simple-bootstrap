@@ -1,0 +1,8 @@
+---
+# defaults file for simple_bootstrap
+
+_simple_bootstrap_pre_packages:
+  - python3
+  - unzip
+
+simple_bootstrap_packages: []

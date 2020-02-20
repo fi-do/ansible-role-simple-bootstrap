@@ -1,0 +1,22 @@
+---
+# tasks file for simple_bootstrap
+
+- name: Execute package list update
+  raw: apt -y update
+  changed_when: False
+
+- name: Execute pre package installation
+  raw: apt install -y {{ item }}
+  changed_when: False
+  with_items:
+    - "{{ _simple_bootstrap_pre_packages }}"
+
+- name: Gather facts
+  setup:
+
+- name: Execute package installation
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ simple_bootstrap_packages }}"

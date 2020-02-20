@@ -1,0 +1,32 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: lxd
+lint:
+  name: yamllint
+platforms:
+  - name: instance-simple-bootstrap
+    url: unix:/var/snap/lxd/common/lxd/unix.socket
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: simplestreams # if you get a 404, try setting protocol: simplestreams
+      alias: ubuntu/bionic/amd64
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    host_vars:
+      instance-simple-bootstrap:
+        ansible_python_interpreter: /usr/bin/python3
+        simple_bootstrap_packages:
+          - nano
+
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
