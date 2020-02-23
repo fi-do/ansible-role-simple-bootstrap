@@ -48,7 +48,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - Bionic
+        - bionic
 
   galaxy_tags:
     - bootstrap
